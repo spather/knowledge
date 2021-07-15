@@ -69,6 +69,53 @@ task printRepos {
     }
 }
 ```
+
+Draft task to print detailed dependency information:
+```groovy
+task extDepInfo {
+    doLast {
+        def wantConfig = "releaseRuntimeClasspath"
+        def conf = project.configurations.getByName(wantConfig)
+
+        def depData = [
+            externalModules: [
+                resolved: [],
+                unresolved: [],
+            ],
+            projects: []
+        ]
+
+        conf.getAllDependencies().each { d ->
+            if (d instanceof ExternalModuleDependency) {
+                try {
+                    def fileColl = conf.fileCollection(d)
+                    def dep = [
+                        name: d.name,
+                        group: d.group,
+                        version: d.version,
+                        files: fileColl.collect { f -> f.absolutePath }
+                    ]
+                    depData.externalModules.resolved.add(dep);
+                } catch (Exception ex) {
+                    depData.externalModules.unresolved.add([
+                        name: d.name,
+                        group: d.group,
+                        version: d.version,
+                    ])
+                }
+            } else if (d instanceof ProjectDependency) {
+                depData.projects.add([
+                    name: d.name,
+                    projectDir: d.dependencyProject.projectDir.absolutePath,
+                ])
+            }
+        }
+
+        println JsonOutput.prettyPrint(JsonOutput.toJson(depData))
+    }
+}
+```
+
 NEXT: try setting the project repositories one at a time, and then trying to resolve each dependency one at a time.
 
 seemed to output dependencies of the build script
