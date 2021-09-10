@@ -26,3 +26,6 @@ See [Output Filename](https://imagemagick.org/script/command-line-processing.php
 ## Borders
 Pad the backgrounds of several pngs with black border:
 `magick level2_background?.png -background black -gravity center -extent 500x500 level2_background_pad.png`
+
+Combine two images into a third (output will be `c.jpg`):
+`convert +append a.jpg b.jpg c.jpg`
