@@ -22,7 +22,8 @@ This will load the image in BGR format. To convert to RGB:
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 # img_rgb is a read-only view of the original data in RGB format
-# If you pass this to operations that mu
+# If you pass this to operations that mutate the image you'll get
+# an exception.
 img_rgb = img[:, :, ::-1]
 ```
 
