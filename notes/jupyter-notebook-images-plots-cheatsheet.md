@@ -27,6 +27,16 @@ img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img_rgb = img[:, :, ::-1]
 ```
 
+### Shear an image
+```python 
+def shear(img, shx, shy):
+    M = np.float32([[1  , shx, 0],
+                    [shy, 1  , 0],
+                    [0  , 0  , 1]])
+    h, w, c = img.shape
+    return cv2.warpPerspective(img, M, (w + int(shx*h), h + int(shy*w)))
+```
+
 ### Display a bunch of images
 
 ```python
