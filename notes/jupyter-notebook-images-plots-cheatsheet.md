@@ -33,7 +33,7 @@ def shear(img, shx, shy):
     M = np.float32([[1  , shx, 0],
                     [shy, 1  , 0],
                     [0  , 0  , 1]])
-    h, w, c = img.shape
+    h, w = img.shape[:2]
     return cv2.warpPerspective(img, M, (w + int(shx*h), h + int(shy*w)))
 ```
 
