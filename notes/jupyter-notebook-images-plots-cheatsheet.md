@@ -37,6 +37,30 @@ def shear(img, shx, shy):
     return cv2.warpPerspective(img, M, (w + int(shx*h), h + int(shy*w)))
 ```
 
+### Warp an image
+
+```python
+def warp_matrix(img, magnitude):
+    h, w = img.shape[:2]
+    src_points = np.float32(
+        [[0  , 0  ],
+         [0  , h-1],
+         [w-1, 0  ],
+         [w-1, h-1]]
+    )
+    dst_points = np.float32(
+        [[magnitude  , magnitude  ],
+         [0          , h-magnitude],
+         [w-1        , 0          ],
+         [w-magnitude,h-magnitude ]]
+    )
+    return cv2.getPerspectiveTransform(src_points, dst_points)
+
+# Apply it
+m_warp = warp_matrix(img, warp_magnitude)
+warped = cv2.warpPerspective(img, m_warp, size)
+```
+
 ### Display a bunch of images
 
 ```python
