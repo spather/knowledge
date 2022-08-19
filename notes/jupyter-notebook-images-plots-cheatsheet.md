@@ -118,3 +118,8 @@ otherwise
 ```python
 plt.style.use("seaborn-whitegrid")
 ```
+
+### Find indices of non-zero elements in a numpy array
+```python
+np.transpose(somearray.nonzero())
+```
