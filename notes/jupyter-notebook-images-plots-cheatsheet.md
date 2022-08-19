@@ -61,6 +61,15 @@ m_warp = warp_matrix(img, warp_magnitude)
 warped = cv2.warpPerspective(img, m_warp, size)
 ```
 
+### Display one image
+
+```python
+plt.figure(figsize=(10,6))
+plt.imshow(some_gray_image, cmap="gray")
+plt.title('my title here')
+plt.axis("off")
+```
+
 ### Display a bunch of images
 
 ```python
