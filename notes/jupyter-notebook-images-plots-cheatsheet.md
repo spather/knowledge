@@ -132,3 +132,6 @@ plt.style.use("seaborn-whitegrid")
 ```python
 np.transpose(somearray.nonzero())
 ```
+
+### Rotation
+[Good explanation](https://theailearner.com/tag/cv2-getrotationmatrix2d/) of the elements of the transform matrix returned by [`cv::getRotationMatrix2D()`](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326).
