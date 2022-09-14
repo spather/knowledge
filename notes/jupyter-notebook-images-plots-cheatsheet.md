@@ -142,8 +142,8 @@ Rotate without clipping the edges:
 def rotation_size(w, h, rotation_angle_degrees):
     rotation_angle = math.radians(rotation_angle_degrees)
     return (
-        int(abs(w * math.cos(rotation_angle) + h * math.sin(rotation_angle))),
-        int(abs(w * math.sin(rotation_angle) + h * math.cos(rotation_angle)))
+        int(w * abs(math.cos(rotation_angle)) + h * abs(math.sin(rotation_angle))),
+        int(w * abs(math.sin(rotation_angle)) + h * abs(math.cos(rotation_angle)))
     )
 
 def rotate(img, angle):
