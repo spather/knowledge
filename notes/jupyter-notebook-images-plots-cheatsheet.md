@@ -135,3 +135,28 @@ np.transpose(somearray.nonzero())
 
 ### Rotation
 [Good explanation](https://theailearner.com/tag/cv2-getrotationmatrix2d/) of the elements of the transform matrix returned by [`cv::getRotationMatrix2D()`](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326).
+
+Rotate without clipping the edges:
+
+```python
+def rotation_size(w, h, rotation_angle_degrees):
+    rotation_angle = math.radians(rotation_angle_degrees)
+    return (
+        int(abs(w * math.cos(rotation_angle) + h * math.sin(rotation_angle))),
+        int(abs(w * math.sin(rotation_angle) + h * math.cos(rotation_angle)))
+    )
+
+def rotate(img, angle):
+    h, w = img.shape[:2]
+    rot_matrix = cv2.getRotationMatrix2D((w // 2, h // 2), angle, 1.0)
+
+    nW, nH = rotation_size(w, h, angle)
+
+    tx = (nW / 2) - (w / 2) 
+    ty = (nH / 2) - (h / 2)
+
+    rot_matrix[0, 2] += tx 
+    rot_matrix[1, 2] += ty 
+    
+    return cv2.warpAffine(img, rot_matrix, (nW, nH))
+```
