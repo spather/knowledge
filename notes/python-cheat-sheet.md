@@ -39,3 +39,12 @@ from pathlib import Path
 target_dir = Path("path/to/target")
 target_dir.mkdir(exist_ok=True, parents=True)
 ```
+
+## Format date/time as a string
+Useful for generating unique filenames
+
+```python
+from datetime import datetime
+
+datetime.now().strftime("%Y%m%d-%H%M%S")
+```
