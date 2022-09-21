@@ -48,3 +48,10 @@ scales the string with the symbol theta by a factor of 1.5.
 
 ## Trig functions
 All the standard trig and other math functions are supported ([docs](https://asymptote.sourceforge.io/doc/Mathematical-functions.html)). For trig functions specifically, they take radians but have variants e.g. `Sin()`, `Cos()` (vs `sin()`, `cos()`) that take degrees.
+
+## Leaving some margin around the edges
+I don't really understand all the concepts in the [frames and pictures docs](https://asymptote.sourceforge.io/doc/Frames-and-pictures.html) but at the end of the day, adding this to the end of a program seems to do the right thing (create a 0.25cm margin around the edges):
+
+```
+shipout(bbox(0.25cm));
+```
