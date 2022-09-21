@@ -4,6 +4,10 @@ https://asymptote.sourceforge.io/
 
 Tutorial: https://asymptote.sourceforge.io/asymptote_tutorial.pdf
 
+Source Code: https://github.com/vectorgraphics/asymptote (often the best reference to things not well documented)
+
+Quick Reference Card: https://asymptote.sourceforge.io/asyRefCard.pdf
+
 ## Installing on Mac
 
 ```bash
