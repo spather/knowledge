@@ -7,6 +7,9 @@ tags: java programming
 * tl;dr: because it just uses `CLASSPATH` to load dependencies
 
 Installing a specific version of Java (JDK?) on MacOS:
+EDIT: Newer info recommends installing OpenJDK from Azul (https://docs.azul.com/core/zulu-openjdk/install/macos)
+EDIT: Even newer info suggests this can be done directly from Homebrew now (https://stackoverflow.com/a/65601197)
+
 * Based on [this article](https://knasmueller.net/how-to-install-java-openjdk-15-on-macos-catalina).
 * Downloaded `openjdk-15.0.2_osx-x64_bin.tar.gz` from https://jdk.java.net/archive/, then:
 ```
