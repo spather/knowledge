@@ -49,6 +49,35 @@ scales the string with the symbol theta by a factor of 1.5.
 ## Trig functions
 All the standard trig and other math functions are supported ([docs](https://asymptote.sourceforge.io/doc/Mathematical-functions.html)). For trig functions specifically, they take radians but have variants e.g. `Sin()`, `Cos()` (vs `sin()`, `cos()`) that take degrees.
 
+## Map 
+Returns the array formed by applying a given function to all elements of a given array. 
+
+```
+pair[] points = {... some list of points ...};
+
+// Get the x coordinates by mapping the function xpart() to the points array. 
+real[] xs = map(xpart, points);
+// Get the y coordinates by mapping the function ypart() to the points array. 
+real[] ys = map(ypart, points);
+```
+
+## Markers
+The [`markers` module](https://asymptote.sourceforge.io/doc/markers.html) provides routines for marking paths and angles. 
+
+To mark an angle defined by 3 points:
+
+```
+markangle(
+	"$\theta$", // label 
+	radius=60, // radius of the arc
+	(x1, y1), // point 1
+	(x2, y2), // point 2
+	(x3, y3), // point 3
+	ArcArrow(1mm),
+	red
+);
+```
+
 ## Leaving some margin around the edges
 I don't really understand all the concepts in the [frames and pictures docs](https://asymptote.sourceforge.io/doc/Frames-and-pictures.html) but at the end of the day, adding this to the end of a program seems to do the right thing (create a 0.25cm margin around the edges):
 
