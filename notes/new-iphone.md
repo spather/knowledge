@@ -19,3 +19,11 @@ Log into all Google accounts (only one account seems to make it over on the migr
 
 Fantastical
 * Enter account key from old device
+
+Strong app
+* Restore purchases
+* Restore connection to Apple Health
+* Restore connection to Apple Watch
+
+WhatsApp
+* Re-login with phone number
