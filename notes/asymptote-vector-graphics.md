@@ -61,6 +61,19 @@ real[] xs = map(xpart, points);
 real[] ys = map(ypart, points);
 ```
 
+## Labels
+The `label()` function takes some text (which might have a transform applied to it), a path to which the label applies, and a compass direction which specifies where the label should appear relative to the path. 
+
+```
+// Horizontal label
+label("w$^\prime$", (x1, y1)--(x2, y2), NE);
+
+// Vertical label
+label(rotate(90)*"h$^\prime$", (x1, y1)--(x2, y2), W);
+```
+
+Note that labels can have Latex math expressions between `$`s.
+
 ## Markers
 The [`markers` module](https://asymptote.sourceforge.io/doc/markers.html) provides routines for marking paths and angles. 
 
