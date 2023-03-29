@@ -26,4 +26,3 @@ In the document, if you don't have any citations, put `\nocite{*}` somewhere in 
 # Useful stuff on getting a makefile going
 * [Latexmk docs](https://mg.readthedocs.io/latexmk.html)
 * [StackExchange answer on how to set up a makefile](https://tex.stackexchange.com/a/318595)
-*
