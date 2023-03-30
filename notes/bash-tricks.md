@@ -1,5 +1,25 @@
 # Bash Tricks
 
+## Figuring out disk space usage
+
+Get the total disk space used by a directory including its subdirectories:
+
+```bash
+du -sh <directory>
+```
+
+Get the total size of each subdirectory without listing all of the files, in descending order of size:
+
+```bash
+du -sm */ | sort -rn
+```
+
+List files in current directory in descending order of size (`--block-size=M` makes output be in megabytes):
+```bash
+ls -lS --block-size=M
+```
+
+
 ## Argument list too long when trying to copy files
 
 ```
