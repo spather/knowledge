@@ -1,5 +1,23 @@
 # My Python Cheat Sheet
 
+## Put a linebreak in a triple-quote string that you don't want to be a literal `\n`
+
+Put a `\` at the end of the line:
+
+```python
+mystring = """\
+This is a long, long, string \
+that won't have any newlines in it \
+despite the linebreaks."""
+```
+
+## Read a JSON file
+```python
+import json
+from pathlib import Path
+
+data = json.loads(Path('path/to/file.json').read_text())
+```
 ## Read a CSV file
 
 ```python
