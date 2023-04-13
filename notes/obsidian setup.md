@@ -8,6 +8,51 @@
     * Enable sycning Active Core Plugins, Core Plugin Settings, Active Community Plugins, Community Plugin Settings
 
 
+## Zettelkasten Setup
+Reference video: https://www.youtube.com/watch?v=E6ySG7xYgjY
+* Create 4 folders:
+  * Files
+  * Reference Notes
+  * Templates
+  * ZK
+* Go to Preferences, Files & Links:
+  * Change "Default location for new notes" to "In the folder specified below" and then specify "ZK" in the selector that appears. 
+  * Change "Default location for new attachments" to "In the folder specified below" and then specify "Files" in the selector that appears.
+* Go to Preferences, Hotkeys:
+  * Filter to "template"
+  * Bind "Templates: Insert template" to a hotkey of choice. I chose ⌘⌥T.
+* Go to Preferences, Core Plugins:
+  * Enable "Templates" if not enabled
+* Go to Preferences, Community Plugins, (turn off Restricted Mode if curently on), select Browse:
+  * Find "Sliding Panes", install and then enable it
+  * Find "Admonition", install and then enable it
+* Go to Preferences, find Templates in the Core Plugins section:
+  * Set "Template folder location" to the Templates folder 
+* In the Templates folder, create a new note called "Core Zettel Idea". In its contents paste the following:
+```
+{{date:YYYMMDD}}{{time:HHmm}}
+Status: #idea
+Tags:
+
+# {{title}}
+
+---
+# References
+```
+
+Tips:
+* Don't use Cmd+N to create new note - use Cmd+O instead which allows fuzzy searching through existing notes so you can find something you may want to add to instead of creating a new note. 
+* Can use link to a ghost note (link to note that doesn't exist) as a tag. If you use the same ghost note link in a subsquent note it will be remembered as the same entity and will be the same node in the graph. These ghost notes are referred to as MOCs (Maps of Content).
+  * Later, you can add content to these ghost notes, turning them into real notes. Consider creating a template for these that at least adds a #moc tag to them, like:
+```
+{{date:YYYMMDD}}{{time:HHmm}}
+Status: #moc
+Tags:
+
+# {{title}}
+```
+
+
 ## Zotero/Obsidian Link
 Reference video: https://www.youtube.com/watch?v=D9ivU_IKO6M
 * Install Zotero from https://www.zotero.org/
