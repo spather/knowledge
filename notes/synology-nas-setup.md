@@ -61,7 +61,7 @@ References:
 * https://superuser.com/questions/736055/ssh-with-no-password-passwordless-on-synology-dsm-5-as-other-non-root-user
 * https://www.chainsawonatireswing.com/2012/01/15/ssh-into-your-synology-diskstation-with-ssh-keys/
 
-## Install [SynoCli Network Tools](https://synocommunity.com/package/synocli-net)
+## Install SynoCommunity Packages
 
 First, enable [SynoCommunity](https://synocommunity.com/) as a Package Source:
 
@@ -71,7 +71,9 @@ Open Package Center, Settings, Package Sources tab, click Add, then enter:
 
 (or do whatever https://synocommunity.com/#easy-install says)
 
-Then use Package Center to install [SynoCli Network Tools](https://synocommunity.com/package/synocli-net)
+Then use Package Center to install:
+* [SynoCli Network Tools](https://synocommunity.com/package/synocli-net)
+* [Git](https://synocommunity.com/package/git)
 
 
 
