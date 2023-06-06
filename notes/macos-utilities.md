@@ -6,3 +6,4 @@
 * [Script Debugger](https://latenightsw.com/): A better tool for editing AppleScripts than the built-in script editor (includes debugging support)
 * [OpenIn](https://loshadki.app/openin4/): Utility that supports opening links in a specific browser
 * [Textinator](https://github.com/RhetTbull/textinator): Menubar utility to copy text from screenshots
+* [Envelope Magic](https://www.envelopemagic.com/): Utility to print envelopes
