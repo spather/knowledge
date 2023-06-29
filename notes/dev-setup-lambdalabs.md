@@ -14,9 +14,6 @@ The default Lambda setup wants you to use the JupyterLab web IDE. But you can st
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Get the directory in which this script lives
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 JUPYTER_LAB_CONFIG="${HOME}/.jupyter/jupyter_config.py"
 
 TOKEN_LINE=$(cat "${JUPYTER_LAB_CONFIG}" | grep 'c.ServerApp.token')
