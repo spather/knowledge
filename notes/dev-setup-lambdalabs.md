@@ -41,5 +41,24 @@ mv ~/.vscode-server path/to/filesystem/
 ln -s path/to/filesystem/.vscode-server ~/.vscode-server
 ```
 
+## Jupyter Server Path
+By default the Jupyter server is configured to use the home directory as the root path. This is super inconvenient because we want to be able to read/write files in the same directory as the notebooks live without specifiying paths.
 
+The following script fixes the config and kills the jupyter server (it will restart automatically):
+
+```sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Script that edits the jupyter lab config to change
+# the root directory.
+JUPYTER_LAB_CONFIG="${HOME}/.jupyter/jupyter_config.py"
+
+OLD_ROOT_DIR="/home/ubuntu"
+NEW_ROOT_DIR="/home/ubuntu/scratchpad/notebooks"
+sed -i "s,^c.ServerApp.root_dir = '${OLD_ROOT_DIR}',c.ServerApp.root_dir = '${NEW_ROOT_DIR}',g" "${JUPYTER_LAB_CONFIG}"
+
+# Kill jupyterlab. It should start again soon automatically
+ps aux | grep '[j]upyter-lab --config' | awk '{print $2}' | xargs kill
+```
 
