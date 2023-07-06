@@ -46,6 +46,7 @@ Then list requirements below this line. Typical requirements for a new project i
 black
 ipykernel # If you'll be using Jupyter notebooks
 mypy
+pip-tools # Even though you manually installed this, put it here so it ends up in the list of dev requirements
 ```
 
 Run `pip-compile` as instructed above to generate `requirements.dev.txt` - this file should be committed to source control, alongside `requirements.dev.in`.
