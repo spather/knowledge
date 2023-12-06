@@ -38,6 +38,9 @@ In project root, create `requirements.dev.in` with the following header:
 #
 # Then install with
 #   pip install -r requirements.dev.txt
+
+# Constrain to packages already in main requirements.txt https://github.com/jazzband/pip-tools#workflow-for-layered-requirements
+-c requirements.txt
 ```
 
 Then list requirements below this line. Typical requirements for a new project include:
