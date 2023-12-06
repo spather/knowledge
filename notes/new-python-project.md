@@ -16,7 +16,7 @@ In project root, create `requirements.in` with the following header:
 
 ```python
 # Compile this file with:
-#   pip-compile --output-file=requirements.txt requirements.in
+#   pip-compile --output-file=requirements.txt requirements.in --resolver=backtracking
 #
 # Then install with
 #   pip install -r requirements.txt
@@ -34,7 +34,7 @@ In project root, create `requirements.dev.in` with the following header:
 
 ```python
 # Compile this file with:
-#   pip-compile --output-file=requirements.dev.txt requirements.dev.in
+#   pip-compile --output-file=requirements.dev.txt requirements.dev.in --resolver=backtracking
 #
 # Then install with
 #   pip install -r requirements.dev.txt
