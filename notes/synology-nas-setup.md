@@ -190,10 +190,43 @@ git clone git@github.com:spather/dotfiles.git
 git clone git@github.com:spather/photos_scripts.git
 ```
 
+## Set up dotfiles and Terminal Environment
 
+### Configure dotfiles
+Assuming you completed the steps above to clone the [dotfiles repo](https://github.com/spather/dotfiles/), do the following to set it up. 
 
+>Note: These instructions are a Diskstation-specific instantiation of the instructions at https://github.com/spather/dotfiles/blob/master/INSTRUCTIONS, but may not be up to date as those evolve. Always check those instructions first for any new or changed steps.
 
+Set up symlinks for bash init files:
 
+```bash
+cd
+ln -s ~/code/dotfiles/ ~/dotfiles
+ln -s ~/dotfiles/.bashrc .bashrc
+ln -s ~/dotfiles/.bashrc-linux .bashrc-site-specific
+ln -s dotfiles/.bash_profile .bash_profile
+```
 
+At this point, you can `source ~/.bashrc` to get the bash environment loaded. 
 
+### Configure git
+Configure some git things:
+```bash
+git config --global core.excludesfile ~/dotfiles/config/xplat/git/gitignore_global
+git config --global user.name "Shyam Pather"
+git config --global user.email "shyam.pather@gmail.com"
+```
+
+### Configure tmux
+
+```bash
+ln -s dotfiles/.tmux.conf .tmux.conf
+ln -s dotfiles/.tmux.conf-linux .tmux.conf-site-specific
+```bash
+
+At this point, you can start tmux:
+
+```bash
+tmux
+```
 
