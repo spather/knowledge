@@ -75,5 +75,76 @@ Then use Package Center to install:
 * [SynoCli Network Tools](https://synocommunity.com/package/synocli-net)
 * [Git](https://synocommunity.com/package/git)
 
+## Install Entware
+Condensed instructions from https://www.technorabilia.com/using-entware-on-synology-nas/:
+
+```bash
+sudo mkdir -p /volume1/@Entware/opt /opt
+sudo mount -o bind /volume1/@Entware/opt /opt
+sudo chmod 0755 /opt
+```
+
+Assuming your processor is x64, run the following (for other architectures, see specific paths in [article above](https://www.technorabilia.com/using-entware-on-synology-nas/)):
+```
+wget -O - http://bin.entware.net/x64-k3.2/installer/generic.sh | sudo /bin/sh
+```
+
+Create a triggered user-defined task in Task Scheduler (all instructions from [article above](https://www.technorabilia.com/using-entware-on-synology-nas/):
+
+* DiskStation Manager > Control Panel > Task Scheduler
+* Create > Triggered Task > User Defined Script
+  * General
+    * Task: Entware
+    * User: root
+    * Event: Boot-up
+    * Pretask: none
+  * Task Settings
+    * Run Command: (see below)
+
+Fill in the following run command:
+
+```bash
+#!/bin/sh
+
+# Mount/Start Entware
+mkdir -p /opt
+mount -o bind "/volume1/@Entware/opt" /opt
+/opt/etc/init.d/rc.unslung start
+
+# Add Entware Profile in Global Profile
+if grep  -qF  '/opt/etc/profile' /etc/profile; then
+	echo "Confirmed: Entware Profile in Global Profile"
+else
+	echo "Adding: Entware Profile in Global Profile"
+cat >> /etc/profile <<"EOF"
+
+# Load Entware Profile
+. /opt/etc/profile
+EOF
+fi
+
+# Update Entware List
+/opt/bin/opkg update
+```
+## Clone Github repos
+
+### Set up ssh key to access GitHub
+Create a new ssh key **on the Diskstation** i.e. run these commands on a terminal session ssh'd into the Disktation:
+
+```bash
+ssh-keygen -t ed25519 -C "shyam.pather@gmail.com"
+```
+
+Create an ssh config file if it doesn't already exist
+
+```bash
+ [ ! -e ~/.ssh/config ] && touch ~/.ssh/config
+```
+
+
+
+
+
+
 
 
