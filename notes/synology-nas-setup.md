@@ -78,6 +78,8 @@ Then use Package Center to install:
 ## Install Entware
 Condensed instructions from https://www.technorabilia.com/using-entware-on-synology-nas/:
 
+Make the necessary directories:
+
 ```bash
 sudo mkdir -p /volume1/@Entware/opt /opt
 sudo mount -o bind /volume1/@Entware/opt /opt
@@ -126,6 +128,22 @@ fi
 # Update Entware List
 /opt/bin/opkg update
 ```
+
+Reboot the NAS.
+
+I didn't see this documented in the articles, but to do anything useful with opkg, I found I had to do the following:
+
+```bash
+sudo chmod 644 /opt/etc/opkg.conf
+sudo chmod 644 /opt/lib/opkg/status
+```
+## Install Required Software
+
+* Mg (emacs clone):
+```bash
+sudo opkg install mg
+```
+
 ## Clone Github repos
 
 ### Set up ssh key to access GitHub
@@ -139,6 +157,37 @@ Create an ssh config file if it doesn't already exist
 
 ```bash
  [ ! -e ~/.ssh/config ] && touch ~/.ssh/config
+```
+
+Edit .ssh config and add the following:
+
+```
+Host github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_Diskstation2_github # or whatever filename you chose
+```
+
+Make sure the agent is running:
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+Add key to agent:
+
+```bash
+ssh-add ~/.ssh/id_Diskstation2_github # or whatever your filename is
+```
+
+Add the new key to Github account per https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account. 
+
+### Clone Repos
+
+```bash
+mkdir -p ~/code
+cd ~/code
+git clone git@github.com:spather/dotfiles.git
+git clone git@github.com:spather/photos_scripts.git
 ```
 
 
