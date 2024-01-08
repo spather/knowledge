@@ -230,3 +230,13 @@ At this point, you can start tmux:
 tmux
 ```
 
+## Set up Shared Folders
+Go to Control Panel/Shared Folder and create the following shared folders. For each, uncheck "Enable Recycle Bin", check "Enable data checksum for advanced data integrity", and give the spather account Read/Write access:
+
+* GoProImport
+* Misc
+* Photos
+* Videos
+
+Verify that you can connect to these via Finder on the Mac. 
+
