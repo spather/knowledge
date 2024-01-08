@@ -240,3 +240,11 @@ Go to Control Panel/Shared Folder and create the following shared folders. For e
 
 Verify that you can connect to these via Finder on the Mac. 
 
+## Set up Photo Scripts Syncing
+
+### Make Logs Directory
+```bash
+sudo mkdir /var/log/photo_scripts
+sudo chown spather /var/log/photo_scripts/
+```
+
