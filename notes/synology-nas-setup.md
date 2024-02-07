@@ -257,6 +257,12 @@ Verify that you can connect to NAS_Storage via Finder on the Mac.
 ### Make Logs Directory
 ```bash
 sudo mkdir /var/log/photo_scripts
-sudo chown spather /var/log/photo_scripts/
+sudo chown:users spather /var/log/photo_scripts/
 ```
+
+### Restore Initial Data from USB Backup
+
+Run `~/code/photos_scripts/sync/diskstation-setup-sync-all-from-usb1` to restore from attached USB1 drive. This will probably take several days to complete. 
+
+>If you're restoring from USB2 or another source, you'll need to create a similar script for that source. 
 
