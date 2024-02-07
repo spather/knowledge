@@ -266,7 +266,7 @@ Run `~/code/photos_scripts/sync/diskstation-setup-sync-all-from-usb1` to restore
 
 ### Set Up `rsync` Service
 
-Reference for this whole section: https://en.jveweb.net/archives/2011/01/running-rsync-as-a-daemon.html
+>Reference for this whole section: https://en.jveweb.net/archives/2011/01/running-rsync-as-a-daemon.html
 
 In DSM, go to Control Panel/File Services, rsync tab and check "Enable rsync service". Leave other settings at their defaults. 
 
@@ -317,3 +317,5 @@ rsync -arvzL ./src_dir/ spather@diskstation2.localdomain::synced/test
 ```
 
 It should prompt for a password and then create the `test` directory on the destination `/volume1/NAS_Storage/synced` and sync the files over. Remove this test directory when you're done testing. 
+
+> As of this writing, enabling the rsync service in DSM causes the daemon to be run under a user account called "SynoRsyncd". I didn't see any options to change this. I expected to have to run the service as root to have it be able to alter file ownership/permissions, but it seems to work as is, so I'm leaving it alone. 
