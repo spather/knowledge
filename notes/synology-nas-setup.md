@@ -266,6 +266,8 @@ Run `~/code/photos_scripts/sync/diskstation-setup-sync-all-from-usb1` to restore
 
 ### Set Up `rsync` Service
 
+Reference for this whole section: https://en.jveweb.net/archives/2011/01/running-rsync-as-a-daemon.html
+
 In DSM, go to Control Panel/File Services, rsync tab and check "Enable rsync service". Leave other settings at their defaults. 
 
 In the terminal edit or create `/etc/rsyncd.conf` with the following content:
