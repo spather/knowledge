@@ -228,7 +228,7 @@ git config --global user.email "shyam.pather@gmail.com"
 ```bash
 ln -s dotfiles/.tmux.conf .tmux.conf
 ln -s dotfiles/.tmux.conf-linux .tmux.conf-site-specific
-```bash
+```
 
 At this point, you can start tmux:
 
