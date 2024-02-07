@@ -6,8 +6,6 @@ User & Group, Advanced, check "Enable user home service"
 
 Terminal & SNMP, check "Enable SSH service"
 
-File Services, rsync, check "Enable rsync service"
-
 ## Enable ssh without a password
 
 ### Steps on the Synology NAS
@@ -264,5 +262,56 @@ sudo chown:users spather /var/log/photo_scripts/
 
 Run `~/code/photos_scripts/sync/diskstation-setup-sync-all-from-usb1` to restore from attached USB1 drive. This will probably take several days to complete. 
 
->If you're restoring from USB2 or another source, you'll need to create a similar script for that source. 
+>If you're restoring from USB2 or another source, you'll need to create a similar script for that source.
 
+### Set Up `rsync` Service
+
+In DSM, go to Control Panel/File Services, rsync tab and check "Enable rsync service". Leave other settings at their defaults. 
+
+In the terminal edit or create `/etc/rsyncd.conf` with the following content:
+
+```
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+use chroot = no
+reverse lookup = no
+refuse options = acls
+
+[synced]
+    path = /volume1/NAS_Storage/synced
+    comment = Root folder for synced directories
+    uid = spather
+    gid = users
+    read only = no
+    list = yes
+    auth users = spather
+    secrets file = /etc/rsyncd.secrets
+```
+
+> You will likely need to elevate permissions to edit this file.
+
+> Make sure uid and gid are set to the user/group name of the user/group you want to have applied to files copied to this server via rsync.
+
+Create/edit the `/etc/rsyncd.secrets` file and enter a line like:
+
+```
+spather:SomePassWord
+```
+
+Taking care that the account name specified here is the same as the one listed in the `auth users` field of the "synced" module in the `/etc/rsyncd.conf` file above. Replace "SomePassWord" with something created by a strong password generator. Save this in a password manager like 1Password as you'll need it every time you rsync to this server. 
+
+Ensure that the `/etc/rsyncd.secrets` is owned by root:root and has only read/write permissions assigned to the owner (`sudo chmod 600 /etc/rsyncd.secrets` will accomplish this). 
+
+After all this, you need to restart the rsync daemon. I don't know of a better way but this works:
+
+* Go to Control Panel/File Services, rsync tab in DSM.
+* Uncheck "Enable rsync service" and save changes.
+* Check "Enable rsync service" and save changes.
+
+You can test that it's all working by running this on another machine (replacing `./src_dir` with some directory that has a small number of files you want to test syncing:
+
+```bash
+rsync -arvzL ./src_dir/ spather@diskstation2.localdomain::synced/test
+```
+
+It should prompt for a password and then create the `test` directory on the destination `/volume1/NAS_Storage/synced` and sync the files over. Remove this test directory when you're done testing. 
