@@ -238,15 +238,19 @@ At this point, you can start tmux:
 tmux
 ```
 
-## Set up Shared Folders
-Go to Control Panel/Shared Folder and create the following shared folders. For each, uncheck "Enable Recycle Bin", check "Enable data checksum for advanced data integrity", and give the spather account Read/Write access:
+## Set up Shared Folder
+Go to Control Panel/Shared Folder and create a shared folder called "NAS_Storage". Uncheck "Enable Recycle Bin", check "Enable data checksum for advanced data integrity", and give the spather account Read/Write access:
 
-* GoProImport
-* Misc
-* Photos
-* Videos
+In a terminal create the following directories, which will be the destinations for syncing: 
 
-Verify that you can connect to these via Finder on the Mac. 
+```bash
+mkdir -p /volume1/NAS_Storage/synced/GoProImport
+mkdir -p /volume1/NAS_Storage/synced/Misc
+mkdir -p /volume1/NAS_Storage/synced/Photos
+mkdir -p /volume1/NAS_Storage/synced/Videos
+```
+
+Verify that you can connect to NAS_Storage via Finder on the Mac. 
 
 ## Set up Photo Scripts Syncing
 
