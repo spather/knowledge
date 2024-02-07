@@ -148,7 +148,7 @@ sudo opkg install tmux
 sudo opkg install bash
 ```
 
-And make bash the default shell by editing /etc/passwd and changing the shell for user spather to whatever `which bash` returns after the preceding commands.
+And make bash the default shell by editing `/etc/passwd` and changing the shell for user spather to whatever `which bash` returns after the preceding commands.
 
 ## Clone Github repos
 
