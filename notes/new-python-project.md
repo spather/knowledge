@@ -2,8 +2,9 @@
 Create a new venv and activate it:
 
 ```bash
-python3 -m venv ~/venv/venv-myproj
-source ~/venv/venv-myproj/bin/activate
+cd path/to/project/root
+python3 -m venv .venv --prompt "project_name/.venv" # replace project_name
+source .venv/bin/activate
 ```
 
 Install pip-tools (you have to do this manually vs via a requirements file because you use pip-tools to compile the requirements file). 
@@ -59,6 +60,16 @@ Run `pip-install` as instructed above to install the dev dependencies.
 In the project root, create a `src/` dir and put the project source code there.
 
 Open VS Code on the project root. If it was previously open before you created the venv, you might need to restart it for it to see the python interpreter from the venv. Before you do any coding, make sure you select the Python interpreter from your venv in the bottom status bar. 
+
+Configure the VS Code filewatcher to ignore the venv directory in the project root by creating a `.vscode/settings.json` (in the project root), with the following content:
+
+```
+{
+  "files.exclude": {
+    ".venv": true
+  }
+}
+```
 
 # If you plan to use Jupyter notebooks
 Create a `notebooks/` folder as a peer of `src/` (not under `src/`) and put notebooks there. Consider putting the `notebooks/` folder in `.gitignore`. 
