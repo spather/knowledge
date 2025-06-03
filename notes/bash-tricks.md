@@ -12,7 +12,12 @@ Get the total size of each subdirectory without listing all of the files, in des
 
 ```bash
 du -sm */ | sort -rn
+
+# or to include hidden files
+du -sm /root/.* /root/* 2>/dev/null | sort -rn
 ```
+
+
 
 List files in current directory in descending order of size (`--block-size=M` makes output be in megabytes):
 ```bash
